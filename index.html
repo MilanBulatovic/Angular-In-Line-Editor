@@ -7,7 +7,8 @@
 		<title>Learn AngularJS - Inline Editor</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" />
-
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		
 		<!-- The main CSS file -->
 		<link href="app.css" rel="stylesheet" />
 
@@ -17,26 +18,24 @@
 	</head>
 
 	<!-- Notice the controller directive -->
-	<body ng-app ng-controller="InlineEditorController" ng-click="hideTooltip()">
+	<!-- When this element is clicked, hide the tooltip -->
+	<body ng-app="Edit" ng-controller="MainController" ng-click="showtooltip=false">
 
-		<!-- When this element is clicked, hide the tooltip -->
+		
 		<div id="main">
-
-				<!-- ng-model binds the contents of the text field with the "value" model.
-					 Any changes to the text field will automatically update the value, and
-					 all other bindings on the page that depend on it.  -->
-                     <!-- This is the tooltip. It is shown only when the showtooltip variable is truthful -->
-
-				<input type="text" ng-model="value" ng-click="$event.stopPropagation()" ng-show="showtooltip"/>
+            <!-- This is the tooltip. It is shown only when the showtooltip variable is truthful -->
+			<div class="input" ng-click="$event.stopPropagation()" ng-show="showtooltip">
+				<input type="text" ng-model="value" />
+			</div>
 
 			<!-- Call a method defined in the InlineEditorController that toggles
 			 the showtooltip varaible -->
-			<p ng-click="toggleTooltip($event)">{{value}}</p>
+			<p ng-click="toggleTooltip($event)"><i class="fa-sharp fa-solid fa-pencil"></i>{{value | uppercase}}</p>
 
 		</div>
 
 		<!-- Include AngularJS from Google's CDN -->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-		<script src="script.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+		<script src="app.js"></script>
 	</body>
 </html>
